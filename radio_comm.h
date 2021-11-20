@@ -31,7 +31,7 @@
                 /* ======================================= *
                  *  F U N C T I O N   P R O T O T Y P E S  *
                  * ======================================= */
-
+void vSpi_init();
 U8 radio_comm_GetResp(U8 byteCount, U8 *pData);
 void radio_comm_SendCmd(U8 byteCount, U8 *pData);
 void radio_comm_ReadData(U8 cmd, BIT pollCts, U8 byteCount, U8 *pData);

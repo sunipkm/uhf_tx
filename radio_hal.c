@@ -42,42 +42,9 @@ void radio_hal_DeassertShutdown(void)
   gpioWrite(RF_PWRDN, GPIO_LOW);
 }
 
-void radio_hal_ClearNsel(void)
-{
-    gpioWrite(RF_NSEL, GPIO_LOW);
-	usleep(100);
-}
-
-void radio_hal_SetNsel(void)
-{
-	usleep(100);
-    gpioWrite(RF_NSEL, GPIO_HIGH);
-	usleep(100);
-}
-
 BIT radio_hal_NirqLevel(void)
 {
     return gpioRead(RF_NIRQ);
-}
-
-void radio_hal_SpiWriteByte(U8 byteToWrite)
-{
-  bSpi_ReadWriteSpi1(byteToWrite);
-}
-
-U8 radio_hal_SpiReadByte(void)
-{
-  return bSpi_ReadWriteSpi1(0xFF);
-}
-
-void radio_hal_SpiWriteData(U8 byteCount, U8* pData)
-{
-  vSpi_WriteDataSpi1(byteCount, pData);
-}
-
-void radio_hal_SpiReadData(U8 byteCount, U8* pData)
-{
-  vSpi_ReadDataSpi1(byteCount, pData);
 }
 
 #ifdef RADIO_DRIVER_EXTENDED_SUPPORT

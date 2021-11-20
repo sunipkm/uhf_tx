@@ -78,7 +78,6 @@ type *name
                                                    ((bitArray ## 6) << 6) | \
                                                    ((bitArray ## 7) << 7);
 
-#include "spi.h"
 #include "radio_config.h"
 #include "radio.h"
 #include "sample_code_func.h"
