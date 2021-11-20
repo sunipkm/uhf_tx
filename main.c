@@ -52,7 +52,7 @@ void main(void)
   {
     // Demo Application Poll-Handler function
     vRadio_StartTx(0, NULL);
-    usleep(250);
+    usleep(100000);
   }
 }
 
