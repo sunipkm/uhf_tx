@@ -137,7 +137,8 @@ void si446x_part_info(void)
  */
 void si446x_start_tx(U8 CHANNEL, U8 CONDITION, U16 TX_LEN)
 {
-	si446x_set_property(0x12, 1, 0x12, (U8) TX_LEN); // write packet length
+    U8 prop_val = (U8) TX_LEN;
+    si446x_set_property(0x12, 0x12, 1, &prop_val);
     eprintf("Set property");
     Pro2Cmd[0] = SI446X_CMD_ID_START_TX;
     Pro2Cmd[1] = CHANNEL;
@@ -254,27 +255,42 @@ void si446x_gpio_pin_cfg(U8 GPIO0, U8 GPIO1, U8 GPIO2, U8 GPIO3, U8 NIRQ, U8 SDO
 #ifdef __C51__
 #pragma maxargs (13)  /* allow 13 bytes for parameters */
 #endif
-void si446x_set_property( U8 GROUP, U8 NUM_PROPS, U8 START_PROP, ... )
+void si446x_set_property( U8 GROUP, U8 PROP, U8 NUM_PROPS, U8 *VALUES)
 {
-    va_list argList;
     U8 cmdIndex;
-
     Pro2Cmd[0] = SI446X_CMD_ID_SET_PROPERTY;
     Pro2Cmd[1] = GROUP;
     Pro2Cmd[2] = NUM_PROPS;
-    Pro2Cmd[3] = START_PROP;
-
-    va_start (argList, START_PROP);
+    Pro2Cmd[3] = PROP;
     cmdIndex = 4;
     while(NUM_PROPS--)
     {
-        Pro2Cmd[cmdIndex] = va_arg (argList, U8);
+        Pro2Cmd[cmdIndex] = VALUES[cmdIndex - 4];
         cmdIndex++;
     }
-    va_end(argList);
-
     radio_comm_SendCmd( cmdIndex, Pro2Cmd );
 }
+// void si446x_set_property( U8 GROUP, U8 NUM_PROPS, U8 START_PROP, ... )
+// {
+//     va_list argList;
+    
+
+//     Pro2Cmd[0] = SI446X_CMD_ID_SET_PROPERTY;
+//     Pro2Cmd[1] = GROUP;
+//     Pro2Cmd[2] = NUM_PROPS;
+//     Pro2Cmd[3] = START_PROP;
+
+//     va_start (argList, START_PROP);
+//     cmdIndex = 4;
+//     while(NUM_PROPS--)
+//     {
+//         Pro2Cmd[cmdIndex] = va_arg (argList, U8);
+//         cmdIndex++;
+//     }
+//     va_end(argList);
+
+//     radio_comm_SendCmd( cmdIndex, Pro2Cmd );
+// }
 
 /*!
  * Issue a change state command to the radio.

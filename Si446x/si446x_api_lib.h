@@ -43,7 +43,7 @@ void si446x_start_rx(U8 CHANNEL, U8 CONDITION, U16 RX_LEN, U8 NEXT_STATE1, U8 NE
 void si446x_get_int_status(U8 PH_CLR_PEND, U8 MODEM_CLR_PEND, U8 CHIP_CLR_PEND);
 void si446x_gpio_pin_cfg(U8 GPIO0, U8 GPIO1, U8 GPIO2, U8 GPIO3, U8 NIRQ, U8 SDO, U8 GEN_CONFIG);
 
-void si446x_set_property( U8 GROUP, U8 NUM_PROPS, U8 START_PROP, ... );
+void si446x_set_property( U8 GROUP, U8 PROP, U8 NUM_PROPS, U8 *VALUES);
 void si446x_change_state(U8 NEXT_STATE1);
 
 #ifdef RADIO_DRIVER_EXTENDED_SUPPORT
