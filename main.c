@@ -87,8 +87,6 @@ void DemoApp_Pollhandler()
 void vInitializeHW()
 {
   // Initialize GPIO
-  gpioSetMode(RF_NSEL, GPIO_OUT);
-  gpioSetMode(RF_NSEL, GPIO_HIGH);
   gpioSetMode(RF_PWRDN, GPIO_OUT);
   gpioSetMode(RF_NIRQ, GPIO_IN);
   // Initialize SPI

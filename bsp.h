@@ -92,7 +92,6 @@ type *name
 
 #include "gpiodev/gpiodev.h"
 #define RF_PWRDN 13
-#define RF_NSEL 15
 #define RF_NIRQ 11
 
 
