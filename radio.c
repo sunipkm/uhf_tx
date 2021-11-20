@@ -133,13 +133,15 @@ void vRadio_StartTx(U8 channel, U8 *pioFixRadioPacket)
     };
     /* Reset TX FIFO */
     si446x_fifo_info(SI446X_CMD_FIFO_INFO_ARG_FIFO_TX_BIT);
-
+    eprintf("Got FIFO info");
     // Read ITs, clear pending ones
     si446x_get_int_status(0u, 0u, 0u);
-
+    eprintf("Got Interrupt info");
     /* Fill the TX fifo with datas */
     // si446x_write_tx_fifo(RadioConfiguration.Radio_PacketLength, pioFixRadioPacket);
     si446x_write_tx_fifo(64u, udata);
+    eprintf("Wrote data to FIFO");
     /* Start sending packet, channel 0, START immediately, Packet length according to PH, go READY when done */
     si446x_start_tx(channel, 0x30, 64u);
+    eprintf("Started TX");
 }

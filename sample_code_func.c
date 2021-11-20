@@ -26,7 +26,7 @@
 BIT vSampleCode_SendFixPacket(void)
 {
 
-  vRadio_StartTx(pRadioConfiguration->Radio_ChannelNumber, (U8 *) &pRadioConfiguration->Radio_CustomPayload[0u]);
+  vRadio_StartTx(pRadioConfiguration->Radio_ChannelNumber, NULL);
 
   /* Packet sending initialized */
   return TRUE;
