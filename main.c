@@ -51,7 +51,7 @@ void main(void)
   while (TRUE)
   {
     // Demo Application Poll-Handler function
-    DemoApp_Pollhandler();
+    vRadio_StartTx(0, NULL);
     usleep(250);
   }
 }
