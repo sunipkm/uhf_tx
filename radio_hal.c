@@ -45,11 +45,14 @@ void radio_hal_DeassertShutdown(void)
 void radio_hal_ClearNsel(void)
 {
     gpioWrite(RF_NSEL, GPIO_LOW);
+	usleep(100);
 }
 
 void radio_hal_SetNsel(void)
 {
+	usleep(100);
     gpioWrite(RF_NSEL, GPIO_HIGH);
+	usleep(100);
 }
 
 BIT radio_hal_NirqLevel(void)
